@@ -25,19 +25,32 @@ cdef class GIG:
     cdef GIG_gen gig
 
     def __cinit__(self, int seed):
+        """ Create an instance of the GIG random generator.
+        
+        Arguments:
+            intseed {int} -- Seed
+        """
         self.gig = GIG_gen(seed)
 
     def sample(self, lambda_, chi, psi):
         """ Draw one random sample from the GIG distribution.
         
         Arguments:
-            lambda_ {[type]} -- [p in wikipedia GIG parametrization]
-            chi {[type]} -- [b in wikipedia GIG parametrization]
-            psi {[type]} -- [a in wikipedia GIG parametrization]
+            lambda_ {float} -- p in wikipedia GIG parametrization
+            chi {float} -- b in wikipedia GIG parametrization
+            psi {float} -- a in wikipedia GIG parametrization
         """
         return(self.gig.sample(lambda_, chi, psi))
 
     def sample_n(self, lambda_, chi, psi, n):
+        """ Draw n random samples from the GIG distribution.
+        
+        Arguments:
+            lambda_ {float} -- p in wikipedia GIG parametrization
+            chi {float} -- b in wikipedia GIG parametrization
+            psi {float} -- a in wikipedia GIG parametrization
+            n {int} -- Number of draws
+        """
         cdef np.ndarray[np.double_t, ndim=1] samples = np.empty(n)
         for i in range(n):
             samples[i] = self.gig.sample(lambda_, chi, psi)
