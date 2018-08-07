@@ -7,6 +7,7 @@ Hörmann, Wolfgang, and Josef Leydold. "Generating generalized inverse Gaussian 
 This is just a Cython wrapper around https://github.com/horta/gig which again is a wrapper based on the
 original R implementation https://cran.r-project.org/web/packages/GIGrvg/GIGrvg.pdf .
 
+<b> Use at own risk, proper tests are still missing. </b>
 
 <h3>TODO</h3>
 Tests are still missing.
