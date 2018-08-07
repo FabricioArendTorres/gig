@@ -12,6 +12,18 @@ original R implementation https://cran.r-project.org/web/packages/GIGrvg/GIGrvg.
 
     pip install -e 'git+https://git@github.com/FabricioArendTorres/gig.git#egg=gig' 
 
+<h3> Usage </h3>
+Example via IPython console:
+
+    In [1]: import gig
+    In [2]: seed = 123
+    In [3]: gen = gig.GIG(seed)
+    In [4]: gen.sample(1,2,3)
+    Out[4]: 0.678740392765086
+    In [5]: gen.sample_n(1,2,3, 5)
+    Out[5]: array([1.53534916, 1.18799838, 2.02144256, 0.55617329, 0.79051624])
+
+
 
 <h3>TODO</h3>
 Tests are still missing.
