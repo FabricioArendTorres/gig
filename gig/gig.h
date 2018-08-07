@@ -3,16 +3,16 @@
 
 #include <random>
 
-using std::mt19937_64;
+namespace gig{
+  class GIG_gen {
+    private:
+      std::mt19937_64 generator;
 
-class Random {
-private:
-  mt19937_64 generator;
-
-public:
-  Random(unsigned int seed) : generator(seed) {}
-  Random(mt19937_64 &generator) : generator(generator) {}
-  double gig(double lambda, double chi, double psi);
-};
-
+    public:
+      GIG_gen() : generator() {}
+      GIG_gen(unsigned int seed) : generator(seed) {}
+      GIG_gen(std::mt19937_64 &generator) : generator(generator) {}
+      double sample(double lambda, double chi, double psi);
+    };
+}
 #endif
