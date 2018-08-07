@@ -8,6 +8,10 @@ This is just a Cython wrapper around https://github.com/horta/gig which again is
 original R implementation https://cran.r-project.org/web/packages/GIGrvg/GIGrvg.pdf .
 
 <b> Use at own risk, proper tests are still missing. </b>
+<h3>Install</h3>
+```
+pip install -e 'git+https://git@github.com/FabricioArendTorres/gig.git#egg=gig' 
+```
 
 <h3>TODO</h3>
 Tests are still missing.
