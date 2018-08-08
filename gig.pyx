@@ -36,11 +36,19 @@ cdef class GIG:
         """ Draw one random sample from the GIG distribution.
         
         Arguments:
-            lambda_ {float} -- p in wikipedia GIG parametrization
-            chi {float} -- b in wikipedia GIG parametrization
-            psi {float} -- a in wikipedia GIG parametrization
+            lambda_ {float or np.ndarray[np.double_t, ndim=1]} -- p in wikipedia GIG parametrization
+            chi {float or np.ndarray[np.double_t, ndim=1]} -- b in wikipedia GIG parametrization
+            psi {float or np.ndarray[np.double_t, ndim=1]} -- a in wikipedia GIG parametrization
         """
-        return(self.gig.sample(lambda_, chi, psi))
+        n = lambda_.shape[0]
+        cdef np.ndarray[np.double_t, ndim=1] samples = np.empty(n)
+        if(n>1 and lambda_.shape[0] == chi.shape[0] and lambda_.shape[0] == psi.shape[0]):
+            for i in range(n):
+                samples[i] = self.gig.sample(lambda_[i], chi[i], psi[i])
+            return(samples)
+
+        else:
+            return(self.gig.sample(lambda_, chi, psi))
 
     def sample_n(self, lambda_, chi, psi, n):
         """ Draw n random samples from the GIG distribution.
