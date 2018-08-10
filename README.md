@@ -7,7 +7,10 @@ Hörmann, Wolfgang, and Josef Leydold. "Generating generalized inverse Gaussian 
 This is just a Cython wrapper around https://github.com/horta/gig which again is a wrapper based on the
 original R implementation https://cran.r-project.org/web/packages/GIGrvg/GIGrvg.pdf .
 
-<b> Use at own risk, proper tests are still missing. </b>
+<b> Use at own risk</b>
+I do a very basic <a href="https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test">KS test</a> for comparing it with draws from the original implementation, but I'm not sure if that is sufficient.
+I'm open for suggestions for better testing.
+
 <h3>Install</h3>
 
     pip install -e 'git+https://git@github.com/FabricioArendTorres/gig.git#egg=gig' 
@@ -23,7 +26,3 @@ Example via IPython console:
     In [5]: gen.sample_n(1,2,3, 5)
     Out[5]: array([1.53534916, 1.18799838, 2.02144256, 0.55617329, 0.79051624])
 
-
-
-<h3>TODO</h3>
-Tests are still missing.
